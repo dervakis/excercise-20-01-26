@@ -1,7 +1,7 @@
 import React, { type ReactNode } from 'react'
 
 interface PropType{
-    children: ReactNode,
+    children?: ReactNode,
     image: string,
     title: string,
     price: number,
@@ -10,9 +10,9 @@ interface PropType{
 }
 function Card({image, title, price=0, details, quantity, children }: PropType) {
     return (
-        <div className='w-1/4 sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl bg-teal-200 shadow-lg rounded'>
+        <div className='w-full sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl bg-teal-200 shadow-lg rounded'>
         <div className='h-50'>
-            <img className='w-full h-full' src={image || "/image.png"} alt="Sunset in the mountains" />
+            <img className='w-full h-full' src={"/image.png"} alt="Sunset in the mountains" />
         </div>
             
             <div className="px-6 py-4">
