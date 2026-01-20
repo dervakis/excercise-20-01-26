@@ -2,6 +2,7 @@ import React from 'react'
 import { useForm, type SubmitErrorHandler, type SubmitHandler } from 'react-hook-form';
 
 type Item = {
+    id: number
     title: string,
     price: number,
     quantity: number,
