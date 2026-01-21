@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, type MouseEventHandler } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -47,6 +47,11 @@ function App() {
     console.log(itemsAsStr);
     SetItems(i => [...i, obj]);
   }
+
+  const DeleteItem = (key: number) =>{
+    localStorage.setItem('items', JSON.stringify(items.filter(i=> i.id !== key)));
+    SetItems(i => i.filter(o => o.id !== key));
+  }
   const Onsubmit: SubmitHandler<Item> = (i) => SaveItem(i);
   const onError: SubmitErrorHandler<Item> = (e) => setErrors(e);
 
@@ -85,6 +90,12 @@ function App() {
                       <Siren /> Limited Deal
                     </div>
                   )}
+                </div>
+                  <div className='mb-10'></div>
+                <div className='absolute inset-x-0 bottom-0'>
+                  <button className='bg-blue-400 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full' onClick={(e: React.MouseEvent<HTMLButtonElement>) => DeleteItem(i.id) }>
+                    Delete
+                </button>
                 </div>
               </Card>
             )
